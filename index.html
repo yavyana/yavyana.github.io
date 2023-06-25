@@ -35,32 +35,32 @@
 
     <h2>レポート記述欄</h2>
     <ul>
-      <li>氏名:</li>
-      <li>学部:</li>
-      <li>学年:</li>
-      <li>学籍番号:</li>
-      <li>CNSメールアドレス:</li>
+      <li>氏名:Yavorska Yana</li>
+      <li>学部:Graduate School of Science and Technology</li>
+      <li>学年:1</li>
+      <li>学籍番号:82316513</li>
+      <li>CNSメールアドレス:-</li>
     </ul>
 
     <h3>収集した行動データについて</h3>
     <ul>
-      <li>選定した理由</li>
-      <li>収集についての詳細</li>
-      <li>工夫した点 / 困難だった点</li>
+      <li>選定した理由: It was easy to obtain</li>
+      <li>収集についての詳細: I collected data of walking, sitting, stretching and running</li>
+      <li>工夫した点 / 困難だった点:It was a bit difficul to collect such data, because phone tends to fall out of my pocket when I run stretch </li>
     </ul>
 
     <h3>特徴量について</h3>
     <ul>
-      <li>選定した理由</li>
-      <li>追加した特徴量について詳細</li>
-      <li>工夫した点 / 困難だった点</li>
+      <li>選定した理由: It is classic set of features that are distinctive for every kind of movement I did</li>
+      <li>追加した特徴量について詳細:I used min, max and average of x,y,z data</li>
+      <li>工夫した点 / 困難だった点:It was a bit difficult to prepare data for learning, as far as there a lot of samples</li>
     </ul>    
 
     <h3>機械学習モデル</h3>
     <ul>
-      <li>採用したアルゴリズムや学習結果の詳細</li>
-      <li>工夫した点</li>
-      <li>工夫した点 / 困難だった点</li>
+      <li>採用したアルゴリズムや学習結果の詳細:I used j48-tree, it contains about 128 branches</li>
+      <li>工夫した点: This amount of branches guarantees better accuracy</li>
+      <li>工夫した点 / 困難だった点:Preparation of data was the most difficult part</li>
     </ul>
 
     <h3>実機に移植しての性能評価</h3>
@@ -202,139 +202,145 @@ function featureExtraction(){
 ////////////////////////////////////////////////////////////////////
 function classify(){
 
-if (zmin <= -1.1) {
-    if (zave <= -0.1) {
-        if (xmin <= 0.2) {
-            if (zmax <= -0.7) {
-                if (zmin <= -2.6) {
-                    return "running";
-                } else if (zmin > -2.6) {
+  if (zmax <= 0.8) {
+    if (zmin <= -0.1) {
+      if (yave <= -3.2) {
+        return 'running';
+      } else {
+        if (zmin <= -1.1) {
+          if (zmin <= -2.1) {
+            if (ymax <= -1.4) {
+              if (xmin <= -1) {
+                return 'running';
+              } else {
+                if (xmax <= 0.2) {
+                  return 'stretching';
+                } else {
+                  return 'running';
+                }
+              }
+            } else {
+              if (ymin <= -6.2) {
+                return 'running';
+              } else {
+                if (xmax <= -0.5) {
+                  return 'walking';
+                } else {
+                  if (zave <= -2.466667) {
+                    if (zave <= -5.566667) {
+                      return 'walking';
+                    } else {
+                      return 'running';
+                    }
+                  } else {
+                    if (ymin <= -0.1) {
+                      if (xmax <= 0.3) {
+                        if (ymax <= 0.2) {
+                          return 'running';
+                        } else {
+                          return 'walking';
+                        }
+                      } else {
+                        if (zmax <= 0.4) {
+                          return 'walking';
+                        } else {
+                          if (ymin <= -0.8) {
+                            return 'walking';
+                          } else {
+                            return 'running';
+                          }
+                        }
+                      }
+                    } else {
+                      if (zmin <= -3.5) {
+                        return 'walking';
+                      } else {
+                        return 'running';
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          } else {
+            if (xmin <= 0.2) {
+              if (ymin <= -1.3) {
+                if (zmin <= -1.7) {
+                  return 'walking';
+                } else {
+                  if (zmin <= -1.3) {
+                    if (xmax <= 0.6) {
+                      if (yave <= -1.3) {
+                        return 'walking';
+                      } else {
+                        return 'running';
+                      }
+                    } else {
+                      return 'stretching';
+                    }
+                  } else {
+                    return 'walking';
+                  }
+                }
+              } else {
+                if (zmin <= -1.9) {
+                  if (xmin <= 0) {
+                    return 'running';
+                  } else {
+                    return 'stretching';
+                  }
+                } else {
+                  if (ymin <= 0.3) {
                     if (ymin <= -0.9) {
-                        if (zave <= -1.5) {
-                            return "running";
-                        } else if (zave > -1.5) {
-                            if (yave <= -0.3) {
-                                return "stretching";
-                            } else if (yave > -0.3) {
-                                if (zave <= -0.6) {
-                                    if (zave <= -0.2) {
-                                        return "stretching";
-                                    } else if (zave > -0.2) {
-                                        return "running";
-                                    }
-                                } else if (zave > -0.6) {
-                                    return "stretching";
-                                }
-                            }
+                      return 'stretching';
+                    } else {
+                      if (zave <= -0.7) {
+                        if (xmin <= -1.4) {
+                          if (xmin <= -3) {
+                            return 'walking';
+                          } else {
+                            return 'running';
+                          }
+                        } else {
+                          return 'stretching';
                         }
-                    } else if (ymin > -0.9) {
-                        if (xmin <= -0.4) {
-                            if (zmax <= -0.3) {
-                                return "running";
-                            } else if (zmax > -0.3) {
-                                if (xmax <= -0.2) {
-                                    return "stretching";
-                                } else if (xmax > -0.2) {
-                                    return "running";
-                                }
-                            }
-                        } else if (xmin > -0.4) {
-                            return "stretching";
-                        }
+                      } else {
+                        return 'walking';
+                      }
                     }
-                }
-            } else if (zmax > -0.7) {
-                if (xmin <= -0.7) {
-                    if (ymax <= -0.5) {
-                        return "running";
-                    } else if (ymax > -0.5) {
-                        return "stretching";
+                  } else {
+                    if (xmin <= -1.3) {
+                      return 'running';
+                    } else {
+                      if (zave <= -0.6) {
+                        return 'walking';
+                      } else {
+                        return 'running';
+                      }
                     }
-                } else if (xmin > -0.7) {
-                    return "running";
+                  }
                 }
+              }
+            } else {
+              return 'walking';
             }
-        } else if (xmin > 0.2) {
-            if (ymin <= -0.9) {
-                if (zave <= -0.3) {
-                    if (zave <= -2.5) {
-                        return "running";
-                    } else if (zave > -2.5) {
-                        if (xmax <= 2.6) {
-                            if (ymax <= -0.1) {
-                                return "stretching";
-                            } else if (ymax > -0.1) {
-                                return "running";
-                            }
-                        } else if (xmax > 2.6) {
-                            return "walking";
-                        }
-                    }
-                } else if (zave > -0.3) {
-                    return "running";
-                }
-            } else if (ymin > -0.9) {
-                if (xmax <= 1.6) {
-                    if (zmax <= 0.2) {
-                        if (xmax <= 0.9) {
-                            if (zave <= 0.5) {
-                                return "walking";
-                            } else if (zave > 0.5) {
-                                if (zmax <= -0.1) {
-                                    return "walking";
-                                } else if (zmax > -0.1) {
-                                    if (ymin <= 0.2) {
-                                        return "running";
-                                    } else if (ymin > 0.2) {
-                                        if (yave <= 0.6) {
-                                            return "stretching";
-                                        } else if (yave > 0.6) {
-                                            return "running";
-                                        }
-                                    }
-                                }
-                            }
-                        } else if (xmax > 0.9) {
-                            return "stretching";
-                        }
-                    } else if (zmax > 0.2) {
-                        return "walking";
-                    }
-                } else if (xmax > 1.6) {
-                    return "stretching";
-                }
-            }
+          }
+        } else {
+          if (xave <= -0.8) {
+            return 'walking';
+          } else {
+            return 'running';
+          }
         }
-    } else if (zave > -0.1) {
-        if (ymin <= 0.1) {
-            return "walking";
-        } else if (ymin > 0.1) {
-            if (ymax <= 0.9) {
-                if (zmax <= 0.1) {
-                    if (xmax <= 1.3) {
-                        if (zave <= 0.4) {
-                            return "walking";
-                        } else if (zave > 0.4) {
-                            return "stretching";
-                        }
-                    } else if (xmax > 1.3) {
-                        return "stretching";
-                    }
-                } else if (zmax > 0.1) {
-                    return "stretching";
-                }
-            } else if (ymax > 0.9) {
-                return "running";
-            }
-        }
+      }
+    } else {
+      return 'running';
     }
-} else if (zmin > -1.1) {
-    if (zmin <= 0.4) {
-        return "stretching";
-    } else if (zmin > 0.4) {
-        return "running";
-    }
+  } else {
+    return 'sitting';
+  }
 }
+
 
 
 }
