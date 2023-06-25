@@ -1,6 +1,8 @@
-<html><head>
-    <meta charset="utf-8">
-    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script><style type="text/css" id="operaUserStyle"></style>
+<html>
+
+  <head>
+    <meta charset="utf-8"/>
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
   </head>
 
   <body>
@@ -24,11 +26,10 @@
     <p> ave z: <span id="zave">0</span> </p>
 
     <h2>(1) Raw sensor values for this time window (X, Y, Z)</h2>
-    <p> X: <span id="accel-x">null</span> </p> 
-    <p> Y: <span id="accel-y">null</span> </p> 
-    <p> Z: <span id="accel-z">null</span> </p>
-    <textarea id="raw-data" cols="80" rows="51">null, null, null
-</textarea>	
+    <p> X: <span id="accel-x">0</span> </p> 
+    <p> Y: <span id="accel-y">0</span> </p> 
+    <p> Z: <span id="accel-z">0</span> </p>
+    <textarea id="raw-data" cols=80 ROWS=51></textarea>	
 
     <hr>
 
@@ -69,10 +70,10 @@
       <li>工夫した点 / 困難だった点</li>
     </ul>
 
-  
+  </body>
 
 
-
+<!--  ===========================================  -->
 <script type="text/javascript">
 
 alert("Welcome to sample activity recognition page (11)!");
@@ -201,27 +202,140 @@ function featureExtraction(){
 ////////////////////////////////////////////////////////////////////
 function classify(){
 
-/*
-    if(zmin <= 0.1){
-	if(xmin <= -0.2){
-	    if(xmin <= -0.4){
-		return 'walking';
-	    }else{
-		return 'still';
-	    }
-	}else{
-	    return 'walking';
-	}
-    }else{
-	return 'still';
+if (zmin <= -1.1) {
+    if (zave <= -0.1) {
+        if (xmin <= 0.2) {
+            if (zmax <= -0.7) {
+                if (zmin <= -2.6) {
+                    return "running";
+                } else if (zmin > -2.6) {
+                    if (ymin <= -0.9) {
+                        if (zave <= -1.5) {
+                            return "running";
+                        } else if (zave > -1.5) {
+                            if (yave <= -0.3) {
+                                return "stretching";
+                            } else if (yave > -0.3) {
+                                if (zave <= -0.6) {
+                                    if (zave <= -0.2) {
+                                        return "stretching";
+                                    } else if (zave > -0.2) {
+                                        return "running";
+                                    }
+                                } else if (zave > -0.6) {
+                                    return "stretching";
+                                }
+                            }
+                        }
+                    } else if (ymin > -0.9) {
+                        if (xmin <= -0.4) {
+                            if (zmax <= -0.3) {
+                                return "running";
+                            } else if (zmax > -0.3) {
+                                if (xmax <= -0.2) {
+                                    return "stretching";
+                                } else if (xmax > -0.2) {
+                                    return "running";
+                                }
+                            }
+                        } else if (xmin > -0.4) {
+                            return "stretching";
+                        }
+                    }
+                }
+            } else if (zmax > -0.7) {
+                if (xmin <= -0.7) {
+                    if (ymax <= -0.5) {
+                        return "running";
+                    } else if (ymax > -0.5) {
+                        return "stretching";
+                    }
+                } else if (xmin > -0.7) {
+                    return "running";
+                }
+            }
+        } else if (xmin > 0.2) {
+            if (ymin <= -0.9) {
+                if (zave <= -0.3) {
+                    if (zave <= -2.5) {
+                        return "running";
+                    } else if (zave > -2.5) {
+                        if (xmax <= 2.6) {
+                            if (ymax <= -0.1) {
+                                return "stretching";
+                            } else if (ymax > -0.1) {
+                                return "running";
+                            }
+                        } else if (xmax > 2.6) {
+                            return "walking";
+                        }
+                    }
+                } else if (zave > -0.3) {
+                    return "running";
+                }
+            } else if (ymin > -0.9) {
+                if (xmax <= 1.6) {
+                    if (zmax <= 0.2) {
+                        if (xmax <= 0.9) {
+                            if (zave <= 0.5) {
+                                return "walking";
+                            } else if (zave > 0.5) {
+                                if (zmax <= -0.1) {
+                                    return "walking";
+                                } else if (zmax > -0.1) {
+                                    if (ymin <= 0.2) {
+                                        return "running";
+                                    } else if (ymin > 0.2) {
+                                        if (yave <= 0.6) {
+                                            return "stretching";
+                                        } else if (yave > 0.6) {
+                                            return "running";
+                                        }
+                                    }
+                                }
+                            }
+                        } else if (xmax > 0.9) {
+                            return "stretching";
+                        }
+                    } else if (zmax > 0.2) {
+                        return "walking";
+                    }
+                } else if (xmax > 1.6) {
+                    return "stretching";
+                }
+            }
+        }
+    } else if (zave > -0.1) {
+        if (ymin <= 0.1) {
+            return "walking";
+        } else if (ymin > 0.1) {
+            if (ymax <= 0.9) {
+                if (zmax <= 0.1) {
+                    if (xmax <= 1.3) {
+                        if (zave <= 0.4) {
+                            return "walking";
+                        } else if (zave > 0.4) {
+                            return "stretching";
+                        }
+                    } else if (xmax > 1.3) {
+                        return "stretching";
+                    }
+                } else if (zmax > 0.1) {
+                    return "stretching";
+                }
+            } else if (ymax > 0.9) {
+                return "running";
+            }
+        }
     }
-*/
-		       
-    if(xmax > 1){
-	return 'walking';
-    }else{
-	return 'still';
+} else if (zmin > -1.1) {
+    if (zmin <= 0.4) {
+        return "stretching";
+    } else if (zmin > 0.4) {
+        return "running";
     }
+}
+
 
 }
 
@@ -229,6 +343,5 @@ function classify(){
 <!--  ===========================================  -->
 
 
-
-</body><!--  ===========================================  -->
 </html>
+
