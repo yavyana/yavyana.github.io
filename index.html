@@ -260,8 +260,8 @@ function classify(){
           } else {
             return "running (9.0)";
           }
-        }
-      } else {
+        } }
+      else {
         if (xmax <= 1.4) {
           if (ymax <= -0.8) {
             if (ymax <= -2.2) {
@@ -297,25 +297,25 @@ function classify(){
                         if (xmax <= -0.1) {
                           if (xmax <= -0.4) {
   return "stretching (2.0)";
-} else if (xmax > -0.4) {
+} else {
   if (ymax <= 0.5) {
     return "stretching (3.0/1.0)";
   } else {
     return "walking (3.0)";
-  }
-} else if (xmax > -0.1) {
+  }}
+} else {
   if (zave <= -0.566667) {
     return "walking (2.0)";
   } else {
     return "running (3.0/1.0)";
   }
-} else if (xmin > -0.3) {
+}}}}} else {
   if (ymax <= 0.2) {
     return "stretching (10.0/1.0)";
   } else {
     return "walking (8.0/2.0)";
   }
-} else if (zmin > -1.1) {
+}} else {
   if (xave <= -0.866667) {
     if (ymax <= -0.3) {
       return "running (3.0/1.0)";
@@ -326,7 +326,7 @@ function classify(){
         return "walking (3.0/1.0)";
       }
     }
-  } else if (xave > -0.866667) {
+  } else {
     if (yave <= 0.333333) {
       return "stretching (196.0/15.0)";
     } else {
@@ -337,13 +337,13 @@ function classify(){
       }
     }
   }
-} else if (ymax > 2) {
+}} else {
   if (zmax <= 0.7) {
     return "running (7.0)";
   } else {
     return "walking (2.0/1.0)";
   }
-} else if (xmax > 1.4) {
+}}} else {
   if (xmax <= 2) {
     if (zmax <= -0.4) {
       if (xmax <= 1.7) {
@@ -358,7 +358,7 @@ function classify(){
         return "walking (2.0/1.0)";
       }
     }
-  } else if (xmax > 2) {
+  } else {
     if (xmin <= -0.4) {
       return "running (6.0/1.0)";
     } else {
@@ -373,7 +373,7 @@ function classify(){
       }
     }
   }
-} else if (zmin > -0.1) {
+}}} else {
   if (zmax <= 0.1) {
     if (xmin <= -0.1) {
       if (xmin <= -0.2) {
@@ -401,13 +401,10 @@ function classify(){
           return "stretching (86.0/12.0)";
         }
       }
-    }
-  }
-} else if (zmax > 0.1) {
-  if (ymax > 1.4) {
+    } else {
     return "walking (10.0)";
   }
-} else {
+}}} else {
   if (zmax > 0.8) {
     if (ymax <= 4.8) {
       if (ymin <= -6.3) {
@@ -585,10 +582,7 @@ function classify(){
   }
 }
 }
-                       }}}}}}}}}}}
-
-
-}
+                       
 
 
 
@@ -598,4 +592,3 @@ function classify(){
 
 
 </html>
-
