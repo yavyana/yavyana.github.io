@@ -202,143 +202,128 @@ function featureExtraction(){
 ////////////////////////////////////////////////////////////////////
 function classify(){
 
-  if (zmax <= 0.8) {
-    if (zmin <= -0.1) {
-      if (yave <= -3.2) {
-        return 'running';
-      } else {
-        if (zmin <= -1.1) {
-          if (zmin <= -2.1) {
-            if (ymax <= -1.4) {
-              if (xmin <= -1) {
-                return 'running';
-              } else {
-                if (xmax <= 0.2) {
-                  return 'stretching';
-                } else {
-                  return 'running';
-                }
-              }
+ if (zmax <= 0.8) {
+  if (zmin <= -0.1) {
+    if (yave <= -3.2) {
+      result = "running";
+    } else {
+      if (zmin <= -1.1) {
+        if (zmin <= -2.1) {
+          if (ymax <= -1.4) {
+            if (xmin <= -1) {
+              result = "running";
             } else {
-              if (ymin <= -6.2) {
-                return 'running';
+              if (xmax <= 0.2) {
+                result = "stretching";
               } else {
-                if (xmax <= -0.5) {
-                  return 'walking';
-                } else {
-                  if (zave <= -2.466667) {
-                    if (zave <= -5.566667) {
-                      return 'walking';
-                    } else {
-                      return 'running';
-                    }
-                  } else {
-                    if (ymin <= -0.1) {
-                      if (xmax <= 0.3) {
-                        if (ymax <= 0.2) {
-                          return 'running';
-                        } else {
-                          return 'walking';
-                        }
-                      } else {
-                        if (zmax <= 0.4) {
-                          return 'walking';
-                        } else {
-                          if (ymin <= -0.8) {
-                            return 'walking';
-                          } else {
-                            return 'running';
-                          }
-                        }
-                      }
-                    } else {
-                      if (zmin <= -3.5) {
-                        return 'walking';
-                      } else {
-                        return 'running';
-                      }
-                    }
-                  }
-                }
+                result = "running";
               }
             }
           } else {
-            if (xmin <= 0.2) {
-              if (ymin <= -1.3) {
-                if (zmin <= -1.7) {
-                  return 'walking';
-                } else {
-                  if (zmin <= -1.3) {
-                    if (xmax <= 0.6) {
-                      if (yave <= -1.3) {
-                        return 'walking';
-                      } else {
-                        return 'running';
-                      }
-                    } else {
-                      return 'stretching';
-                    }
-                  } else {
-                    return 'walking';
-                  }
-                }
+            if (ymin <= -6.2) {
+              result = "running";
+            } else {
+              if (xmax <= -0.5) {
+                result = "walking";
               } else {
-                if (zmin <= -1.9) {
-                  if (xmin <= 0) {
-                    return 'running';
-                  } else {
-                    return 'stretching';
-                  }
+                if (zave <= -5.566667) {
+                  result = "walking";
                 } else {
-                  if (ymin <= 0.3) {
-                    if (ymin <= -0.9) {
-                      return 'stretching';
-                    } else {
-                      if (zave <= -0.7) {
-                        if (xmin <= -1.4) {
-                          if (xmin <= -3) {
-                            return 'walking';
-                          } else {
-                            return 'running';
-                          }
-                        } else {
-                          return 'stretching';
-                        }
-                      } else {
-                        return 'walking';
-                      }
-                    }
-                  } else {
-                    if (xmin <= -1.3) {
-                      return 'running';
-                    } else {
-                      if (zave <= -0.6) {
-                        return 'walking';
-                      } else {
-                        return 'running';
-                      }
-                    }
-                  }
+                  result = "running";
                 }
               }
-            } else {
-              return 'walking';
             }
           }
         } else {
-          if (xave <= -0.8) {
-            return 'walking';
+          if (xmin <= 0.2) {
+            if (ymin <= -1.3) {
+              if (zmin <= -1.7) {
+                result = "walking";
+              } else {
+                if (zmin <= -1.3) {
+                  result = "walking";
+                } else {
+                  result = "running";
+                }
+              }
+            } else {
+              if (zmin <= -1.9) {
+                result = "running";
+              } else {
+                if (ymin <= 0.3) {
+                  if (xmin <= -1.4) {
+                    result = "walking";
+                  } else {
+                    result = "stretching";
+                  }
+                } else {
+                  result = "walking";
+                }
+              }
+            }
           } else {
-            return 'running';
+            result = "walking";
           }
         }
+      } else {
+        if (xave <= 1.066667) {
+          if (ymax <= -0.9) {
+            if (ymin <= -2.9) {
+              result = "stretching";
+            } else {
+              result = "running";
+            }
+          } else {
+            if (ymin <= 0.6) {
+              if (xmin <= -1.4) {
+                if (yave <= -0.133333) {
+                  if (xmax <= 44958) {
+                    if (zmin <= -0.6) {
+                      result = "walking";
+                    } else {
+                      if (yave <= -0.7) {
+                        result = "walking";
+                      } else {
+                        result = "running";
+                      }
+                    }
+                  } else {
+                    result = "running";
+                  }
+                } else {
+                  if (xmin <= -3.4) {
+                    result = "walking";
+                  } else {
+                    if (xave <= -0.566667) {
+                      result = "stretching";
+                    } else {
+                      result = "walking";
+                    }
+                  }
+                }
+              } else {
+                if (zmax <= -0.1) {
+                  result = "stretching";
+                } else {
+                  result = "walking";
+                }
+              }
+            } else {
+              result = "sitting";
+            }
+          }
+        } else {
+          result = "sitting";
+        }
       }
-    } else {
-      return 'running';
     }
   } else {
-    return 'sitting';
+    result = "walking";
   }
+} else {
+  result = "walking";
+}
+
 }
 
 
